@@ -1,7 +1,7 @@
 package com.pubsub.chat;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+
+import org.apache.log4j.Logger;
 import redis.clients.jedis.Jedis;
 
 import java.io.BufferedReader;
@@ -12,7 +12,8 @@ import java.io.InputStreamReader;
  * Created by Anuj on 05-08-2017.
  */
 public class Publisher {
-    private static final Logger logger = LoggerFactory.getLogger(Publisher.class);
+
+    private static final Logger logger = Logger.getLogger(Publisher.class);
     private final Jedis pubJedi;
     private final String channel;
 
@@ -21,7 +22,7 @@ public class Publisher {
         this.channel = channel;
     }
     public void start() {
-        logger.info("Type your message (quit for terminate)");
+        logger.info("Start chatting enter \"quit\" to terminate");
         try {
             BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 
@@ -34,7 +35,6 @@ public class Publisher {
                     break;
                 }
             }
-
         } catch (IOException e) {
             logger.error("IO failure while reading input, e");
         }

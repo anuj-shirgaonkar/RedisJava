@@ -1,17 +1,19 @@
 package com.pubsub.chat;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+
+import org.apache.log4j.Logger;
 import redis.clients.jedis.JedisPubSub;
 
 /**
  * Created by Anuj on 05-08-2017.
  */
 public class Subscriber extends JedisPubSub {
-    private static Logger logger = LoggerFactory.getLogger(Subscriber.class);
+    private static Logger logger = Logger.getLogger(Subscriber.class);
+
     @Override
     public void onMessage(String channel, String message) {
-        logger.info("Message received. Channel: {}, Msg: {}", channel, message);
+        System.out.println("Message: "+message);
+        logger.info("Message received. Channel: {" + channel + "}, Msg: {" + message + "}");
     }
 
     @Override

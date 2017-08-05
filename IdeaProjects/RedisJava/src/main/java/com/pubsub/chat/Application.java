@@ -11,6 +11,7 @@ import redis.clients.jedis.JedisPoolConfig;
 
 import java.util.logging.Logger;
 
+
 public class Application {
 
     public static final String CHANNEL_NAME = "yoda";
@@ -28,11 +29,11 @@ public class Application {
 
             public void run() {
                 try {
-                    logger.info("Subscribing to \"yoda\". This thread will be blocked.");
+                    logger.info("Subscribing to \"yoda\"");
                     subscriberJedis.subscribe(subscriber, CHANNEL_NAME);
-                    logger.info("Subscription ended.");
+                    logger.info("Subscription ended");
                 } catch (Exception e) {
-                    //logger.error("Subscribing failed.", e);
+                    logger.info("Subscribing failed.");
                 }
             }
         }).start();
